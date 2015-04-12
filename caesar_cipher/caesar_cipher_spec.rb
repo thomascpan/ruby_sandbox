@@ -1,34 +1,39 @@
-require "caesar_cipher"
+require "./caesar_cipher"
 
-describe "caesar_cipher" do 
+describe "caesar_cipher" do
 	
-	it "caesar_cipher lower case word" do
+	it "translates a lower case word" do
 		s = caesar_cipher("hello", 1)
-		s.should == "ifmmp"
+		expect(s).to eq "ifmmp"
 	end
 
-	it "caesar_cipher upper case word" do
+	it "translates an upper case word" do
 		s = caesar_cipher("HELLO", 1)
-		s.should == "IFMMP"
+		expect(s).to eq "IFMMP"
 	end
 
-	it "caesar_cipher mix case word" do
+	it "translates a mix case word" do
 		s = caesar_cipher("Hello", 1)
-		s.should == "Ifmmp"
+		expect(s).to eq "Ifmmp"
 	end
 
-	it "caesar_cipher multiple words" do
+	it "translates multiple words" do
 		s = caesar_cipher("Hello Bob", 1)
-		s.should == "Ifmmp Cmc"
+		expect(s).to eq "Ifmmp Cpc"
 	end
 
-	it "caesar_cipher multiple words with punctuations" do
+	it "translates multiple words with punctuations" do
 		s = caesar_cipher("Hello, my name is Thomas!", 1)
-		s.should == "Ifmmp, nz obnf jt Uipnbt!"
+		expect(s).to eq "Ifmmp, nz obnf jt Uipnbt!"
 	end
 
-	it "caesar_cipher multiple words past end of alphabet" do
+	it "translates multiple words past end of alphabet" do
 		s = caesar_cipher("Hello, my name is Thomas!", 5)
-		s.should == "Mjqqt, rd sfrj nx Ymtrfx!"
+		expect(s).to eq "Mjqqt, rd sfrj nx Ymtrfx!"
+	end
+
+	it "doesn't translate special characters" do
+		s = caesar_cipher("!@#$%^&*", 1)
+		expect(s).to eq "!@#$%^&*"
 	end
 end

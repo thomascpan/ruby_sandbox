@@ -1,13 +1,13 @@
 module Enumerable 
 	def my_each
-		return self unless block_given?
+		return self.to_enum unless block_given?
 		for i in self
 			yield(i)
 		end
 	end
 
 	def my_each_with_index
-		return self unless block_given?
+		return self.to_enum unless block_given?
 		index = 0
 		for i in self
 			yield(i, index)
@@ -16,7 +16,7 @@ module Enumerable
 	end
 
 	def my_select
-		return self unless block_given?
+		return self.to_enum unless block_given?
 		temp_self = []
 		self.my_each do |j|
 			if yield(j) == true
@@ -28,57 +28,86 @@ module Enumerable
 	end
 
 	def my_all?
-		return self unless block_given?
-		result = true
-		for i in self
-			if yield(i) == true
-			else 
-				return false
+
+		if block_given?
+			result = true
+			for i in self
+				if yield(i) == true
+				else 
+					return false
+				end
 			end
+			return true
+		else
+			for i in self
+				if i != nil && i != false
+				else
+					return false
+				end
+			end
+			return true
 		end
-		return true
 	end
 
 	def my_any?
-		return self unless block_given?
-		result = false
-		for i in self 
-			if yield(i) == true
-				return true
-			else
+		if block_given?
+			result = false
+			for i in self 
+				if yield(i) == true
+					return true
+				else
+				end
 			end
+			return false
+		else
+			for i in self 
+				if i != false && i != nil
+					return true
+				end
+			end
+			false
 		end
-		return false
 	end
 
 	def my_none?
-		return self unless block_given?
-		result = true
-		for i in self
-			if yield(i) == false
-			else
-				return false
+		if block_given?
+			result = true
+			for i in self
+				if yield(i) == false
+				else
+					return false
+				end
 			end
+			return true
+		else
+			for i in self 
+				if i == false || i == nil
+				else
+					return false
+				end
+			end
+			return true
 		end
-		return true
 	end
 
-	def my_count
-		j = 0 
+	def my_count(*arg)
+		return self.size unless block_given? || arg != []
+		j = 0
 		if block_given?
 			for i in self
-				if yield(i) == true  
+				if yield(i) == true
 					j += 1
 				end
 			end
 		else
 			for i in self
-				j += 1
-			end		
+				if i == arg[0]
+					j += 1
+				end
+			end
 		end
 		return j
 	end
-
 	# def my_map
 	# 	return self unless block_given?
 	# 	new_array = []
@@ -99,10 +128,10 @@ module Enumerable
 
   def my_inject(initial=nil,sym=nil)
 
-      result = initial.nil? ? nil : initial
+      result = initial.nil? ? self[0] : initial
 
       if block_given?
-          for i in self
+          for i in 2..self.size
               result = yield(result,i)
           end
       else
@@ -122,9 +151,7 @@ module Enumerable
       end
 
       return result
-
   end
-
 end
 
 # def multiply_els(array)
@@ -132,8 +159,8 @@ end
 # end
 
 a = [1, 2, 3]
-b = []
-add = Proc.new {|x| x+2}
+# b = []
+# add = Proc.new {|x| x+2}
 # a.my_each {|x| puts x}
 # a.my_each_with_index {|x, index| puts "#{x}: #{index}"}
 # test_variable = [1, 2, 3, 8, 7, 4].my_select {|x| x <= 6}
@@ -160,3 +187,6 @@ add = Proc.new {|x| x+2}
 # puts multiply_els([2, 4, 5])
 # puts a.my_map(&add)
 # puts a.my_map(&add) {|x| x+1}
+
+a = [1, 2, 3]
+a.each
