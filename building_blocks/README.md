@@ -1,4 +1,4 @@
-Project: Sketch-Pad
+Project: Building Blocks
 
 Link: http://www.theodinproject.com/ruby-programming/building-blocks
 
