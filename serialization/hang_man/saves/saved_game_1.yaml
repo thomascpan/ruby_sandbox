@@ -1,0 +1,16 @@
+--- !ruby/object:Hangman
+incorrect_guesses_count: 2
+secret_word: urethrae
+guess_line:
+- u
+- _
+- e
+- _
+- _
+- _
+- a
+- e
+misses:
+- i
+- o
+guess: u
