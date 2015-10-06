@@ -1,6 +1,6 @@
 Project: Event Manager
 
-Link: http://www.theodinproject.com/ruby-programming/advanced-building-blocks
+Link: http://www.theodinproject.com/ruby-programming/files-and-serialization
 
 Description: An file I/O exercise from Jumpstart Lab's [EventManager](http://tutorials.jumpstartlab.com/projects/eventmanager.html).
 
