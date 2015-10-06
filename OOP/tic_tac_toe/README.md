@@ -1,6 +1,6 @@
 Project: Tic Tac Toe
 
-Link: http://www.theodinproject.com/ruby-programming/advanced-building-blocks
+Link: http://www.theodinproject.com/ruby-programming/oop
 
 Description: A Command Line Interface of [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe).
 

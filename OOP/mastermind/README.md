@@ -1,6 +1,6 @@
 Project: Master Mind
 
-Link: http://www.theodinproject.com/ruby-programming/advanced-building-blocks
+Link: http://www.theodinproject.com/ruby-programming/oop
 
 Description: A Command Line Interface of [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)).
 
