@@ -15,12 +15,12 @@ Game menu has four options: (l)oad a game, (s)tart a new game, (d)elete a game, 
 
 Enter first the first letter of the option to proceed. 
 
-####Load/Delete
+#### Load/Delete ####
 
 Load or Delete a saved game by entering the file name. Ex. game_01.yaml
 
 
-####Start
+#### Start ####
 
 A random word will be generated. 
 Player loses if they make reach 8 incorrect guesses. 
