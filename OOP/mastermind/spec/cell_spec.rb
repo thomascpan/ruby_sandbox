@@ -1,4 +1,4 @@
-require "helper_spec"
+require "spec_helper"
 
 module Mastermind
 	describe Cell do
@@ -6,7 +6,7 @@ module Mastermind
 		context "#initialize" do
 			it "initialize with no value as default" do
 				input = Cell.new()
-				expect(input.value).to eq ""
+				expect(input.value).to eq nil
 			end
 
 			it "initialize with value 'blue'" do

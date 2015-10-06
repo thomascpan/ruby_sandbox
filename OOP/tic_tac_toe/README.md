@@ -4,6 +4,8 @@ Link: http://www.theodinproject.com/ruby-programming/advanced-building-blocks
 
 Description: A Command Line Interface of [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe).
 
+Author(s): Thomas Pan
+
 Instructions: Run game with `$ruby example/example_game.rb`. 
 
 ###Gameplay
@@ -16,6 +18,4 @@ _ _ _
 _ _ _
 _ _ _ 
 ```
-
-Author(s): Thomas Pan
 

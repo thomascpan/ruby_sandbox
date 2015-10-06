@@ -1,4 +1,4 @@
-require "helper_spec"
+require "spec_helper"
 
 module Mastermind
 	describe Board do
@@ -41,70 +41,22 @@ module Mastermind
 			end						
 		end
 
-		context "#grid" do 
-			it "returns the grid" do
-				input = Board.new(grid: "blah")
-				expect(input.grid).to eq "blah"
-			end
-		end
-
 		context "#get_guess" do
 			it "returns the array of a guess at a given round" do
-				grid = [[['', '', '', ''], ['', '', '',  'hello']]]
-				input = Board.new(grid: grid)
+				input = Board.new
 				round = 0
-				expect(input.get_guess(round)).to eq ['', '', '', '']	
+				input.get_guess(round).each do |e|
+					expect(e.value).to eq nil
+				end
 			end
 		end
 
 		context "#set_guess" do
 			it "changes the values of an array of a guess at a given round " do
-				Cat = Struct.new(:value)
-				grid = [[[Cat.new(""), Cat.new(""), Cat.new(""), Cat.new("")], ['', '', '', '']]]
-				input = Board.new(grid: grid)
+				input = Board.new
 				input.set_guess(0, "meow")
-				x = input.get_guess(0).map {|cell| cell.value}
+				x = input.get_guess(0).map {|cell| cell.value }
 				expect(x.join).to eq "meow"
-			end
-		end
-
-		# Works correctly, but do not know how to test. 
-		context "#solution" do
-			it "returns randomly generated solution" do
-				input = Board.new
-				solution_array = ["R", "O", "Y", "G"]
-				expect(input.solution). to eq ["R", "O", "Y", "G"]
-			end
-		end
-
-		context "#game_over" do
-			it "returns :winner if winner? is true" do
-				input = Board.new
-				allow(input).to receive(:winner?) {true}
-				expect(input.game_over).to eq :winner
-			end
-
-			it "returns false if winner? is false and loser? is false" do
-				input = Board.new
-				allow(input).to receive(:winner?) {false}
-				allow(input).to receive(:loser?) {false}
-				expect(input.game_over).to eq false
-			end
-
-			it "returns :loser if winner? is false and loser? is true" do
-				input = Board.new
-				allow(input).to receive(:winner?) {false}
-				allow(input).to receive(:loser?) {true}
-				expect(input.game_over).to eq :loser
-			end
-		end
-
-		# I think it's working, but do not know how to test. 
-		context "#hint" do 
-			it "returns a hint array based off guess" do
-				input = Board.new
-				solution = ["O", "R", "R", "R"]
-				expect(input.hint("RORB")).to eq ["B", "W", "W"]
 			end
 		end
 	end
