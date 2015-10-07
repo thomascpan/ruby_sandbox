@@ -144,11 +144,7 @@ class Hangman
 		load_file = gets.strip
 		yaml = "saves/#{load_file}"
 		if saves.include?(yaml)
-			puts yaml
-			puts YAML
-			puts YAML::load_file(yaml)
 			load = YAML::load_file(yaml)
-			print load.game_control
 			return load.game_control
 		end
 
